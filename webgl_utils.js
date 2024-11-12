@@ -1,4 +1,4 @@
-
+//requires gl-matrix module, you can add it in html file with <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.4.0/gl-matrix.js"></script>
 function compileShader(gl,src,type) {
     let shader = createShader(type)
     gl.shaderSource(shader,src)

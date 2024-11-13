@@ -17,15 +17,18 @@ function shaderProgram(gl,vs,fs) {
     gl.useProgram(program)
     return program
 }
-function vertexBuffer(gl,vertices,sp,posName,colorName) {
-    let vertexBuffer = gl.createBuffer()
+
+function vertexBuffer(gl,vertices,sp) {
+    let buffer = gl.createBuffer()
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
-    let posLoc = gl.getAttribLocation(sp, posName),
-        colorLoc = gl.getAttribLocation(sp, colorName)
-    gl.vertexAttribPointer(posLoc, 3, gl.FLOAT, false,  0)
-    gl.enableVertexAttribArray(posLoc)
-    return vertexBuffer
+    return buffer
+}
+function vertexAttrib(gl,sp,attribName,stride,offset) {
+    let loc = gl.getAttribLocation(sp,attribName)
+    gl.vertexAttribPointer(loc,size,gl.FLOAT,false,stride * Float32Array.BYTES_PER_ELEMENT,offset)
+    gl.enableVertexAttribArray(loc)
+    return loc
 }
 function doMatrices(canvas,gl,sp,objMatName,projMatName,stride) {
     let objMatLoc = gl.getUniformLocation(sp,objMatName)

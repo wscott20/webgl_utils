@@ -26,7 +26,7 @@ function vertexBuffer(gl,vertices,sp) {
 }
 function vertexAttrib(gl,sp,attribName,stride,offset) {
     let loc = gl.getAttribLocation(sp,attribName)
-    gl.vertexAttribPointer(loc,size,gl.FLOAT,false,stride * Float32Array.BYTES_PER_ELEMENT,offset)
+    gl.vertexAttribPointer(loc,size,gl.FLOAT,false,stride * Float32Array.BYTES_PER_ELEMENT,offset * Float32Array.BYTES_PER_ELEMENT)
     gl.enableVertexAttribArray(loc)
     return loc
 }

@@ -30,7 +30,7 @@ function vertexAttrib(gl,sp,attribName,stride,offset) {
     gl.enableVertexAttribArray(loc)
     return loc
 }
-function doMatrices(canvas,gl,sp,objMatName,projMatName,stride) {
+function doMatrices(canvas,gl,sp,objMatName,projMatName) {
     let objMatLoc = gl.getUniformLocation(sp,objMatName)
     let projMatLoc = gl.getUniformLocation(sp,projMatName)
     let projMat = mat4.create()

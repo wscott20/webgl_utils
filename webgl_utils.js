@@ -18,9 +18,9 @@ function shaderProgram(gl,vs,fs) {
     return program
 }
 
-function vertexBuffer(gl,vertices,sp) {
+function vertexBuffer(gl,vertices) {
     let buffer = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer)
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
     return buffer
 }

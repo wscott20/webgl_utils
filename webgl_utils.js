@@ -49,7 +49,11 @@ function doMatrices(canvas,gl,sp,objMatName,projMatName) {
 function updateMatrix(gl,matLoc,mat) {
     gl.uniformMatrix4fv(matLoc,false,mat)
 }
-function draw(gl,indexCount,offset) {
+function drawArrays(gl,index,vertexCount) {
+    gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
+    gl.drawArrays(gl.TRIANGLES,index,vertexCount)
+}
+function drawElements(gl,indexCount,offset) {
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
     gl.drawElements(gl.TRIANGLES,indexCount,gl.UNSIGNED_SHORT,offset)
 }

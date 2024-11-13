@@ -24,7 +24,13 @@ function vertexBuffer(gl,vertices) {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
     return buffer
 }
-function vertexAttrib(gl,sp,attribName,stride,offset) {
+function indexBuffer(gl,indices) {
+    let buffer = gl.createBuffer()
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, buffer)
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW)
+    return buffer
+}
+function vertexAttrib(gl,sp,attribName,stride,offset,size) {
     let loc = gl.getAttribLocation(sp,attribName)
     gl.vertexAttribPointer(loc,size,gl.FLOAT,false,stride * Float32Array.BYTES_PER_ELEMENT,offset * Float32Array.BYTES_PER_ELEMENT)
     gl.enableVertexAttribArray(loc)
@@ -43,7 +49,7 @@ function doMatrices(canvas,gl,sp,objMatName,projMatName) {
 function updateMatrix(gl,matLoc,mat) {
     gl.uniformMatrix4fv(matLoc,false,mat)
 }
-function draw(gl,index,vertexCount) {
+function draw(gl,indexCount,offset) {
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT)
-    gl.drawArrays(gl.TRIANGLES,index,vertexCount)
+    gl.drawElements(gl.TRIANGLES,indexCount,gl.UNSIGNED_SHORT,offset)
 }
